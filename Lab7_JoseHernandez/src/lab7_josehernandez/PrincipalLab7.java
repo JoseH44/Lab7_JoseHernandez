@@ -23,7 +23,47 @@ public class PrincipalLab7 extends javax.swing.JFrame {
     public PrincipalLab7() {
         initComponents();
         this.setLocationRelativeTo(null);
+        DefaultTableModel modell = (DefaultTableModel) jt_buses.getModel();
+        DefaultTableModel model5 = (DefaultTableModel) jt_estudiantes.getModel();
+        DefaultTableModel model8 = (DefaultTableModel) jt_asignarParada.getModel();
         lista_Paradas.add(new Parada("Unitec", 0, 0));
+        adminParadas ap = new adminParadas("./paradas.hz");
+        adminBuses ad = new adminBuses("./autobuses.hz");
+        adminEstudiantes ae = new adminEstudiantes("./estudiantes.hz");
+        for (int i = 0; i < ad.getListaAutobuses().size(); i++) {
+            Object[] newRowW = {
+                ad.getListaAutobuses().get(i).getNumID(), ad.getListaAutobuses().get(i).getPlaca(),
+                ad.getListaAutobuses().get(i).getVelocidad()
+            };
+            modell.addRow(newRowW);
+            jt_buses.setModel(modell);
+        }//for de los autobuses.
+
+        for (int i = 0; i < ae.getLista_estudiantes().size(); i++) {
+            Object[] newRoww = {
+                ae.getLista_estudiantes().get(i).getNombre(),
+                ae.getLista_estudiantes().get(i).getEdad(),
+                ae.getLista_estudiantes().get(i).getNumCuenta(),
+                ae.getLista_estudiantes().get(i).getParada()
+            };
+            model5.addRow(newRoww);
+            jt_estudiantes.setModel(model5);
+            jt_estudiantesAsignar.setModel(model5);
+        }//for de los estudiantes.
+
+        for (int i = 0; i < ap.getLista_paradas().size(); i++) {
+            Object[] newRowrow = {
+                ap.getLista_paradas().get(i).getNombre()
+            };
+            model8.addRow(newRowrow);
+            jt_asignarParada.setModel(model8);
+            
+        }//for de las paradas
+        
+
+        ap.cargarArchivo();
+        ap.setParada(lista_Paradas.get(0));
+        ap.escribirArchivo();
         DefaultTableModel modelT = (DefaultTableModel) jt_asignarParada.getModel();
         Object[] newRowN = {lista_Paradas.get(0).getNombre()};
         modelT.addRow(newRowN);
@@ -541,6 +581,7 @@ public class PrincipalLab7 extends javax.swing.JFrame {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         DefaultTableModel model = (DefaultTableModel) jt_buses.getModel();
+
         int numID = Integer.parseInt(tf_busID.getText());
         String placa = tf_placaBus.getText();
         double velocidad = Double.parseDouble(tf_velocidadBus.getText());
@@ -549,7 +590,12 @@ public class PrincipalLab7 extends javax.swing.JFrame {
             placa, velocidad + "Km/h"};
         model.addRow(newRow);
         jt_buses.setModel(model);
+        Autobus auto = new Autobus(numID, placa, color, velocidad);
         lista_autobuses.add(new Autobus(numID, placa, color, velocidad));
+        adminBuses ad = new adminBuses("./autobuses.hz");
+        ad.cargarArchivo();
+        ad.SetAutobus(auto);
+        ad.escribirArchivo();
         tf_busID.setText("");
         tf_placaBus.setText("");
         tf_velocidadBus.setText("");
@@ -568,7 +614,14 @@ public class PrincipalLab7 extends javax.swing.JFrame {
         String nombre = tf_nombreEstudiante.getText();
         int edad = (int) js_edad.getValue();
         int numCuenta = Integer.parseInt(tf_cuentaEst.getText());
+        Estudiante estu = new Estudiante(nombre, edad, numCuenta);
+
         lista_Estudiantes.add(new Estudiante(nombre, edad, numCuenta));
+        adminEstudiantes ae = new adminEstudiantes("./estudiantes.hz");
+        ae.cargarArchivo();
+        ae.setEstudiante(estu);
+        ae.escribirArchivo();
+
         Object[] newRow = {
             nombre, edad, numCuenta, new Parada()};
         model1.addRow(newRow);
@@ -587,10 +640,16 @@ public class PrincipalLab7 extends javax.swing.JFrame {
         double dist = Double.parseDouble(tf_distancia.getText());
         double angulo = Double.parseDouble(tf_angulo.getText());
         lista_Paradas.add(new Parada(nomParada, dist, angulo));
+        Parada par = new Parada(nomParada, dist, angulo);
+        adminParadas ap = new adminParadas("./paradas.hz");
+        ap.cargarArchivo();
+        ap.setParada(par);
+        ap.escribirArchivo();
         Object[] newRow = {
             nomParada
         };
         m.addRow(newRow);
+
         jt_asignarParada.setModel(m);
         tf_nombreParada.setText("");
         tf_distancia.setText("");
