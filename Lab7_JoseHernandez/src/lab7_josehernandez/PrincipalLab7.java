@@ -24,7 +24,10 @@ public class PrincipalLab7 extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         lista_Paradas.add(new Parada("Unitec", 0, 0));
-        DefaultTableModel modelT = (DefaultTableModel) jt_buses.getModel();
+        DefaultTableModel modelT = (DefaultTableModel) jt_asignarParada.getModel();
+        Object[] newRowN = {lista_Paradas.get(0).getNombre()};
+        modelT.addRow(newRowN);
+        jt_asignarParada.setModel(modelT);
 
     }
 
@@ -42,6 +45,11 @@ public class PrincipalLab7 extends javax.swing.JFrame {
         jt_estudiantesAsignar = new javax.swing.JTable();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        jd_asignarParada = new javax.swing.JDialog();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jt_asignarParada = new javax.swing.JTable();
+        jButton8 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -76,6 +84,7 @@ public class PrincipalLab7 extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jt_estudiantes = new javax.swing.JTable();
+        jButton7 = new javax.swing.JButton();
 
         jd_AsignarEstudiantes.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         jd_AsignarEstudiantes.setTitle("Estudiantes");
@@ -145,6 +154,72 @@ public class PrincipalLab7 extends javax.swing.JFrame {
                     .addComponent(jButton5)
                     .addComponent(jButton6))
                 .addGap(47, 47, 47))
+        );
+
+        jt_asignarParada.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nombre"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane4.setViewportView(jt_asignarParada);
+
+        jButton8.setText("Asignar esta Parada al Estudiante");
+        jButton8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton8MouseClicked(evt);
+            }
+        });
+
+        jButton9.setText("Salir");
+        jButton9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton9MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jd_asignarParadaLayout = new javax.swing.GroupLayout(jd_asignarParada.getContentPane());
+        jd_asignarParada.getContentPane().setLayout(jd_asignarParadaLayout);
+        jd_asignarParadaLayout.setHorizontalGroup(
+            jd_asignarParadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_asignarParadaLayout.createSequentialGroup()
+                .addContainerGap(24, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 599, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22))
+            .addGroup(jd_asignarParadaLayout.createSequentialGroup()
+                .addGap(164, 164, 164)
+                .addComponent(jButton8)
+                .addGap(35, 35, 35)
+                .addComponent(jButton9)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jd_asignarParadaLayout.setVerticalGroup(
+            jd_asignarParadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_asignarParadaLayout.createSequentialGroup()
+                .addGap(74, 74, 74)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addGroup(jd_asignarParadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton8)
+                    .addComponent(jButton9))
+                .addGap(22, 22, 22))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -417,21 +492,35 @@ public class PrincipalLab7 extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jt_estudiantes);
 
+        jButton7.setText("Agregarle Parada");
+        jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton7MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+            .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap(41, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 614, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 614, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(37, 37, 37))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addComponent(jButton7)
+                        .addGap(284, 284, 284))))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(90, 90, 90)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(118, Short.MAX_VALUE))
+                .addGap(41, 41, 41)
+                .addComponent(jButton7)
+                .addContainerGap(54, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Estudiantes", jPanel5);
@@ -479,7 +568,7 @@ public class PrincipalLab7 extends javax.swing.JFrame {
         String nombre = tf_nombreEstudiante.getText();
         int edad = (int) js_edad.getValue();
         int numCuenta = Integer.parseInt(tf_cuentaEst.getText());
-        lista_Estudiantes.add(new Estudiante(nombre, edad, numCuenta, new Parada()));
+        lista_Estudiantes.add(new Estudiante(nombre, edad, numCuenta));
         Object[] newRow = {
             nombre, edad, numCuenta, new Parada()};
         model1.addRow(newRow);
@@ -493,10 +582,16 @@ public class PrincipalLab7 extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        DefaultTableModel m = (DefaultTableModel) jt_asignarParada.getModel();
         String nomParada = tf_nombreParada.getText();
         double dist = Double.parseDouble(tf_distancia.getText());
         double angulo = Double.parseDouble(tf_angulo.getText());
         lista_Paradas.add(new Parada(nomParada, dist, angulo));
+        Object[] newRow = {
+            nomParada
+        };
+        m.addRow(newRow);
+        jt_asignarParada.setModel(m);
         tf_nombreParada.setText("");
         tf_distancia.setText("");
         tf_angulo.setText("");
@@ -529,6 +624,38 @@ public class PrincipalLab7 extends javax.swing.JFrame {
         jd_AsignarEstudiantes.dispose();
     }//GEN-LAST:event_jButton6MouseClicked
 
+    private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
+        if (jt_estudiantes.getSelectedRow() >= 0) {
+            posEstudiante = jt_estudiantes.getSelectedRow();
+            estudiante_actual = lista_Estudiantes.get(posEstudiante);
+            jd_asignarParada.pack();
+            jd_asignarParada.setModal(true);
+            jd_asignarParada.setLocationRelativeTo(this);
+            jd_asignarParada.setVisible(true);
+
+        }
+    }//GEN-LAST:event_jButton7MouseClicked
+
+    private void jButton9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MouseClicked
+        jd_asignarParada.dispose();
+        this.setVisible(true);
+    }//GEN-LAST:event_jButton9MouseClicked
+
+    private void jButton8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseClicked
+        DefaultTableModel mo = (DefaultTableModel) jt_estudiantes.getModel();
+        if (jt_asignarParada.getSelectedRow() >= 0) {
+            int pos = jt_asignarParada.getSelectedRow();
+            parada_actual = lista_Paradas.get(pos);
+            if (estudiante_actual.getParada() == null) {
+                estudiante_actual.setParada(parada_actual);
+                mo.setValueAt(parada_actual, posEstudiante, 3);
+                JOptionPane.showMessageDialog(jd_asignarParada, "Parada Asignada Exitosamente");
+            } else {
+                JOptionPane.showMessageDialog(jd_asignarParada, "Este Estudiante Ya Cuenta con una Parada");
+            }
+        }
+    }//GEN-LAST:event_jButton8MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -540,7 +667,7 @@ public class PrincipalLab7 extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -571,6 +698,9 @@ public class PrincipalLab7 extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -589,10 +719,13 @@ public class PrincipalLab7 extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JButton jb_colorBus;
     private javax.swing.JDialog jd_AsignarEstudiantes;
+    private javax.swing.JDialog jd_asignarParada;
     private javax.swing.JSpinner js_edad;
+    private javax.swing.JTable jt_asignarParada;
     private javax.swing.JTable jt_buses;
     private javax.swing.JTable jt_estudiantes;
     private javax.swing.JTable jt_estudiantesAsignar;
@@ -610,5 +743,7 @@ public class PrincipalLab7 extends javax.swing.JFrame {
     ArrayList<Parada> lista_Paradas = new ArrayList();
     Autobus bus_actual;
     Estudiante estudiante_actual;
+    Parada parada_actual;
+    int posEstudiante;
 
 }
