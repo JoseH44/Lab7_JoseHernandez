@@ -30,6 +30,9 @@ public class PrincipalLab7 extends javax.swing.JFrame {
         adminParadas ap = new adminParadas("./paradas.hz");
         adminBuses ad = new adminBuses("./autobuses.hz");
         adminEstudiantes ae = new adminEstudiantes("./estudiantes.hz");
+        ap.cargarArchivo();
+        ad.cargarArchivo();
+        ae.cargarArchivo();
         for (int i = 0; i < ad.getListaAutobuses().size(); i++) {
             Object[] newRowW = {
                 ad.getListaAutobuses().get(i).getNumID(), ad.getListaAutobuses().get(i).getPlaca(),
@@ -57,9 +60,8 @@ public class PrincipalLab7 extends javax.swing.JFrame {
             };
             model8.addRow(newRowrow);
             jt_asignarParada.setModel(model8);
-            
+
         }//for de las paradas
-        
 
         ap.cargarArchivo();
         ap.setParada(lista_Paradas.get(0));
@@ -125,6 +127,7 @@ public class PrincipalLab7 extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jt_estudiantes = new javax.swing.JTable();
         jButton7 = new javax.swing.JButton();
+        jPanel6 = new javax.swing.JPanel();
 
         jd_AsignarEstudiantes.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         jd_AsignarEstudiantes.setTitle("Estudiantes");
@@ -565,6 +568,19 @@ public class PrincipalLab7 extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Estudiantes", jPanel5);
 
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 692, Short.MAX_VALUE)
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 427, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Simulacion", jPanel6);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -775,6 +791,7 @@ public class PrincipalLab7 extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
