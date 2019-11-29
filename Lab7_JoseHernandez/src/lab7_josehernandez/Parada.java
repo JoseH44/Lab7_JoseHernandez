@@ -27,6 +27,8 @@ public class Parada implements Serializable {
         this.nombre = nombre;
         this.distancia = distancia;
         this.angulo = angulo;
+        coordenadaX = distancia * Math.cos(angulo);
+        coordenadaY = distancia * Math.sin(angulo);
 
     }
 

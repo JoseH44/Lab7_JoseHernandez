@@ -22,11 +22,12 @@ public class Estudiante implements Serializable {
     public Estudiante() {
     }
 
-    public Estudiante(String nombre, int edad, int numCuenta) {
+    public Estudiante(String nombre, int edad, int numCuenta, Parada parada) {
         this.nombre = nombre;
         this.edad = edad;
         this.numCuenta = numCuenta;
-        
+        this.parada = parada;
+
     }
 
     public String getNombre() {

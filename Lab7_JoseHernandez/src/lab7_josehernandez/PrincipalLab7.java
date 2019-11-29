@@ -8,6 +8,8 @@ package lab7_josehernandez;
 import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.JColorChooser;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -20,6 +22,10 @@ public class PrincipalLab7 extends javax.swing.JFrame {
      */
     public PrincipalLab7() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        lista_Paradas.add(new Parada("Unitec", 0, 0));
+        DefaultTableModel modelT = (DefaultTableModel) jt_buses.getModel();
+
     }
 
     /**
@@ -31,6 +37,11 @@ public class PrincipalLab7 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jd_AsignarEstudiantes = new javax.swing.JDialog();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jt_estudiantesAsignar = new javax.swing.JTable();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -54,12 +65,87 @@ public class PrincipalLab7 extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         tf_nombreParada = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        tf_distancia = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         tf_angulo = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jt_buses = new javax.swing.JTable();
+        jButton4 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jt_estudiantes = new javax.swing.JTable();
+
+        jd_AsignarEstudiantes.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        jd_AsignarEstudiantes.setTitle("Estudiantes");
+
+        jt_estudiantesAsignar.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nombre", "Edad", "N° Cuenta", "Parada"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane3.setViewportView(jt_estudiantesAsignar);
+
+        jButton5.setText("Agregar Este Estudiante");
+        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton5MouseClicked(evt);
+            }
+        });
+
+        jButton6.setText("Salir");
+        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton6MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jd_AsignarEstudiantesLayout = new javax.swing.GroupLayout(jd_AsignarEstudiantes.getContentPane());
+        jd_AsignarEstudiantes.getContentPane().setLayout(jd_AsignarEstudiantesLayout);
+        jd_AsignarEstudiantesLayout.setHorizontalGroup(
+            jd_AsignarEstudiantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_AsignarEstudiantesLayout.createSequentialGroup()
+                .addGroup(jd_AsignarEstudiantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_AsignarEstudiantesLayout.createSequentialGroup()
+                        .addGap(91, 91, 91)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 614, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jd_AsignarEstudiantesLayout.createSequentialGroup()
+                        .addGap(247, 247, 247)
+                        .addComponent(jButton5)
+                        .addGap(70, 70, 70)
+                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(95, Short.MAX_VALUE))
+        );
+        jd_AsignarEstudiantesLayout.setVerticalGroup(
+            jd_AsignarEstudiantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_AsignarEstudiantesLayout.createSequentialGroup()
+                .addGap(95, 95, 95)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addGroup(jd_AsignarEstudiantesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton5)
+                    .addComponent(jButton6))
+                .addGap(47, 47, 47))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -135,7 +221,7 @@ public class PrincipalLab7 extends javax.swing.JFrame {
                         .addComponent(jb_colorBus, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(54, 54, 54)
                 .addComponent(jButton1)
-                .addContainerGap(93, Short.MAX_VALUE))
+                .addContainerGap(170, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Crear Bus", jPanel1);
@@ -165,31 +251,32 @@ public class PrincipalLab7 extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(js_edad, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(174, 174, 174)
+                        .addComponent(jButton2))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(tf_nombreEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(68, 68, 68)
-                        .addComponent(jLabel7))
-                    .addComponent(js_edad, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2)
-                    .addComponent(tf_cuentaEst, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(192, Short.MAX_VALUE))
+                        .addGap(59, 59, 59)
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tf_cuentaEst, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(201, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(46, 46, 46)
+                .addGap(101, 101, 101)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(tf_nombreEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
                     .addComponent(tf_cuentaEst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(60, 60, 60)
+                .addGap(63, 63, 63)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(js_edad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2))
-                .addContainerGap(201, Short.MAX_VALUE))
+                .addContainerGap(220, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Crear Estudiante", jPanel2);
@@ -201,6 +288,11 @@ public class PrincipalLab7 extends javax.swing.JFrame {
         jLabel10.setText("Angulo (rad):");
 
         jButton3.setText("Crear Parada");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -214,7 +306,7 @@ public class PrincipalLab7 extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(tf_nombreParada)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE))
+                    .addComponent(tf_distancia, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE))
                 .addGap(91, 91, 91)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
@@ -236,38 +328,113 @@ public class PrincipalLab7 extends javax.swing.JFrame {
                 .addGap(64, 64, 64)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tf_distancia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3))
-                .addContainerGap(198, Short.MAX_VALUE))
+                .addContainerGap(275, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Crear Parada", jPanel3);
+
+        jt_buses.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "N°Identificacion", "Placa", "Velocidad"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jt_buses);
+
+        jButton4.setText("Asignarle Estudiantes");
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton4MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 692, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(26, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 645, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21))
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(278, 278, 278)
+                .addComponent(jButton4)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 350, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap(84, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(51, 51, 51)
+                .addComponent(jButton4)
+                .addGap(72, 72, 72))
         );
 
-        jTabbedPane1.addTab("tab4", jPanel4);
+        jTabbedPane1.addTab("Autobuses", jPanel4);
+
+        jt_estudiantes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nombre", "Edad", "N° Cuenta", "Parada"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(jt_estudiantes);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 692, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap(41, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 614, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 350, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(90, 90, 90)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(118, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("tab5", jPanel5);
+        jTabbedPane1.addTab("Estudiantes", jPanel5);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -284,16 +451,21 @@ public class PrincipalLab7 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        DefaultTableModel model = (DefaultTableModel) jt_buses.getModel();
         int numID = Integer.parseInt(tf_busID.getText());
         String placa = tf_placaBus.getText();
         double velocidad = Double.parseDouble(tf_velocidadBus.getText());
         Color color = jb_colorBus.getBackground();
+        Object[] newRow = {numID,
+            placa, velocidad + "Km/h"};
+        model.addRow(newRow);
+        jt_buses.setModel(model);
         lista_autobuses.add(new Autobus(numID, placa, color, velocidad));
         tf_busID.setText("");
         tf_placaBus.setText("");
         tf_velocidadBus.setText("");
         jb_colorBus.setBackground(Color.BLACK);
-        
+
 
     }//GEN-LAST:event_jButton1MouseClicked
 
@@ -302,15 +474,60 @@ public class PrincipalLab7 extends javax.swing.JFrame {
     }//GEN-LAST:event_jb_colorBusMouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        DefaultTableModel model1 = (DefaultTableModel) jt_estudiantes.getModel();
+        DefaultTableModel mod = (DefaultTableModel) jt_estudiantesAsignar.getModel();
         String nombre = tf_nombreEstudiante.getText();
         int edad = (int) js_edad.getValue();
         int numCuenta = Integer.parseInt(tf_cuentaEst.getText());
-        lista_Estudiantes.add(new Estudiante(nombre, edad, numCuenta));
+        lista_Estudiantes.add(new Estudiante(nombre, edad, numCuenta, new Parada()));
+        Object[] newRow = {
+            nombre, edad, numCuenta, new Parada()};
+        model1.addRow(newRow);
+        mod.addRow(newRow);
+        jt_estudiantes.setModel(model1);
+        jt_estudiantesAsignar.setModel(mod);
         tf_nombreEstudiante.setText("");
         js_edad.setValue(0);
         tf_cuentaEst.setText("");
 
     }//GEN-LAST:event_jButton2MouseClicked
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        String nomParada = tf_nombreParada.getText();
+        double dist = Double.parseDouble(tf_distancia.getText());
+        double angulo = Double.parseDouble(tf_angulo.getText());
+        lista_Paradas.add(new Parada(nomParada, dist, angulo));
+        tf_nombreParada.setText("");
+        tf_distancia.setText("");
+        tf_angulo.setText("");
+    }//GEN-LAST:event_jButton3MouseClicked
+
+    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+        if (jt_buses.getSelectedRow() >= 0) {
+            int pos = jt_buses.getSelectedRow();
+            bus_actual = lista_autobuses.get(pos);
+            jd_AsignarEstudiantes.pack();
+            jd_AsignarEstudiantes.setModal(true);
+            jd_AsignarEstudiantes.setVisible(true);
+            jd_AsignarEstudiantes.setLocationRelativeTo(this);
+
+        }
+
+
+    }//GEN-LAST:event_jButton4MouseClicked
+
+    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
+        if (jt_estudiantesAsignar.getSelectedRow() >= 0) {
+            int pos = jt_estudiantesAsignar.getSelectedRow();
+            estudiante_actual = lista_Estudiantes.get(pos);
+            bus_actual.getEstudiantes().add(estudiante_actual);
+            JOptionPane.showMessageDialog(jd_AsignarEstudiantes, "Estudiante Asignado Exitosamente");
+        }
+    }//GEN-LAST:event_jButton5MouseClicked
+
+    private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
+        jd_AsignarEstudiantes.dispose();
+    }//GEN-LAST:event_jButton6MouseClicked
 
     /**
      * @param args the command line arguments
@@ -351,6 +568,9 @@ public class PrincipalLab7 extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -366,13 +586,20 @@ public class PrincipalLab7 extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JButton jb_colorBus;
+    private javax.swing.JDialog jd_AsignarEstudiantes;
     private javax.swing.JSpinner js_edad;
+    private javax.swing.JTable jt_buses;
+    private javax.swing.JTable jt_estudiantes;
+    private javax.swing.JTable jt_estudiantesAsignar;
     private javax.swing.JTextField tf_angulo;
     private javax.swing.JTextField tf_busID;
     private javax.swing.JTextField tf_cuentaEst;
+    private javax.swing.JTextField tf_distancia;
     private javax.swing.JTextField tf_nombreEstudiante;
     private javax.swing.JTextField tf_nombreParada;
     private javax.swing.JTextField tf_placaBus;
@@ -381,5 +608,7 @@ public class PrincipalLab7 extends javax.swing.JFrame {
     ArrayList<Autobus> lista_autobuses = new ArrayList();
     ArrayList<Estudiante> lista_Estudiantes = new ArrayList();
     ArrayList<Parada> lista_Paradas = new ArrayList();
-    
+    Autobus bus_actual;
+    Estudiante estudiante_actual;
+
 }
