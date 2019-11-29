@@ -6,19 +6,22 @@
 package lab7_josehernandez;
 
 import java.awt.Color;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author jrdjh
  */
-public class Autobus {
+public class Autobus implements Serializable {
 
     private int numID;
     private String placa;
     private Color color;
     private double velocidad;
     private ArrayList<Estudiante> estudiantes = new ArrayList();
+
+    private static final long SerialVersionUID = 111L;
 
     public Autobus() {
     }

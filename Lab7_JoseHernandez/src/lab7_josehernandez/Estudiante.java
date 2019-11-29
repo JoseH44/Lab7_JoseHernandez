@@ -5,16 +5,19 @@
  */
 package lab7_josehernandez;
 
+import java.io.Serializable;
+
 /**
  *
  * @author jrdjh
  */
-public class Estudiante {
+public class Estudiante implements Serializable {
 
     private String nombre;
     private int edad;
     private int numCuenta;
     private Parada parada;
+    private static final long SerialVersionUID = 333L;
 
     public Estudiante() {
     }

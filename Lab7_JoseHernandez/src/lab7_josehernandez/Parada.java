@@ -5,17 +5,20 @@
  */
 package lab7_josehernandez;
 
+import java.io.Serializable;
+
 /**
  *
  * @author jrdjh
  */
-public class Parada {
+public class Parada implements Serializable {
 
     private String nombre;
     private double distancia;
     private double angulo;
     private double coordenadaX;
     private double coordenadaY;
+    private static final long SerialVersionUID = 222L;
 
     public Parada() {
     }
@@ -24,7 +27,7 @@ public class Parada {
         this.nombre = nombre;
         this.distancia = distancia;
         this.angulo = angulo;
-        
+
     }
 
     public String getNombre() {
@@ -71,9 +74,5 @@ public class Parada {
     public String toString() {
         return nombre;
     }
-    
-    
-    
-    
 
 }
