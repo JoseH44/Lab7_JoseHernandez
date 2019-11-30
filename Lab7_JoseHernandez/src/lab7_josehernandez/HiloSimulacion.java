@@ -98,6 +98,9 @@ public class HiloSimulacion extends Thread {
         double distancia = dist(parada1.getCoordenadaX(), parada2.getCoordenadaX(), parada1.getCoordenadaY(), parada2.getCoordenadaY());
         while (vive) {
             barra.setValue(barra.getValue() + 1);
+            if (barra.getValue() == distancia) {
+                vive = false;
+            }
         }
         try {
             Thread.sleep(1000);
@@ -110,6 +113,7 @@ public class HiloSimulacion extends Thread {
         double distMenor = 0;
         Collections.sort(dist);
         distMenor = dist.get(0);
+        
         return distMenor;
     }
 

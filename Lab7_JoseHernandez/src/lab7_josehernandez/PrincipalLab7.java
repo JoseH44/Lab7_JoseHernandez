@@ -7,6 +7,7 @@ package lab7_josehernandez;
 
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.Collections;
 import javax.swing.JColorChooser;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -22,7 +23,7 @@ public class PrincipalLab7 extends javax.swing.JFrame {
      */
     public PrincipalLab7() {
         initComponents();
-        hilo = new HiloSimulacion(pb_transcurrido, jt_transcurso, bus_actual, parada_actual, parada_actual);
+        hilo = new HiloSimulacion(pb_transcurrido, jt_transcurso, bus_actual, parada_actual, parada2);
         this.setLocationRelativeTo(null);
         DefaultTableModel modell = (DefaultTableModel) jt_buses.getModel();
         DefaultTableModel model5 = (DefaultTableModel) jt_estudiantes.getModel();
@@ -828,15 +829,17 @@ public class PrincipalLab7 extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton11MouseClicked
 
     private void jButton12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton12MouseClicked
-        double menor = hilo.sacarMenor(distancias);
+        
         int pos = 0;
         adminParadas ap = new adminParadas("./paradas.hz");
         ap.cargarArchivo();
+
         for (int i = 0; i < ap.getLista_paradas().size(); i++) {
-            if (ap.getLista_paradas().get(i).getDistancia() == menor) {
-                pos = i;
-            }
+            distancias.add(ap.getLista_paradas().get(i).getDistancia());
         }
+        double menor = hilo.sacarMenor(distancias);
+        
+        parada2 = ap.getLista_paradas().get(pos);
 
         hilo.start();
     }//GEN-LAST:event_jButton12MouseClicked
@@ -938,6 +941,7 @@ public class PrincipalLab7 extends javax.swing.JFrame {
     Autobus bus_actual;
     Estudiante estudiante_actual;
     Parada parada_actual;
+    Parada parada2;
     int posEstudiante;
     HiloSimulacion hilo;
     ArrayList<Double> distancias = new ArrayList();
