@@ -49,7 +49,7 @@ public class adminEstudiantes {
     }
 
     public void setEstudiante(Estudiante e) {
-        this.lista_estudiantes.add(e);
+        lista_estudiantes.add(e);
     }
 
     public void cargarArchivo() {

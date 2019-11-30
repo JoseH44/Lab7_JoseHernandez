@@ -24,6 +24,7 @@ public class adminParadas {
 
     public adminParadas(String path) {
         archivo = new File(path);
+
     }
 
     public ArrayList<Parada> getLista_paradas() {
@@ -55,6 +56,7 @@ public class adminParadas {
         try {
             lista_paradas = new ArrayList();
             Parada temp;
+            lista_paradas.add(new Parada("Unitec", 0, 0));
             if (archivo.exists()) {
                 FileInputStream entrada = new FileInputStream(archivo);
                 ObjectInputStream objeto = new ObjectInputStream(entrada);

@@ -48,7 +48,7 @@ public class adminBuses {
     }
 
     public void SetAutobus(Autobus a) {
-        this.listaAutobuses.add(a);
+        listaAutobuses.add(a);
     }
 
     public void cargarArchivo() {
