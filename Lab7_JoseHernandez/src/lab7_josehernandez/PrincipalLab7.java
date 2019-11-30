@@ -36,6 +36,8 @@ public class PrincipalLab7 extends javax.swing.JFrame {
         ad.cargarArchivo();
         ae.cargarArchivo();
 
+        parada_actual = ap.getLista_paradas().get(0);
+
         for (int i = 0; i < ad.getListaAutobuses().size(); i++) {
             Object[] newRowW = {
                 ad.getListaAutobuses().get(i).getNumID(), ad.getListaAutobuses().get(i).getPlaca(),
@@ -721,6 +723,7 @@ public class PrincipalLab7 extends javax.swing.JFrame {
         String nomParada = tf_nombreParada.getText();
         double dist = Double.parseDouble(tf_distancia.getText());
         double angulo = Double.parseDouble(tf_angulo.getText());
+        distancias.add(dist);
 
         Parada par = new Parada(nomParada, dist, angulo);
         adminParadas ap = new adminParadas("./paradas.hz");
@@ -825,6 +828,15 @@ public class PrincipalLab7 extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton11MouseClicked
 
     private void jButton12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton12MouseClicked
+        double menor = hilo.sacarMenor(distancias);
+        int pos = 0;
+        adminParadas ap = new adminParadas("./paradas.hz");
+        ap.cargarArchivo();
+        for (int i = 0; i < ap.getLista_paradas().size(); i++) {
+            if (ap.getLista_paradas().get(i).getDistancia() == menor) {
+                pos = i;
+            }
+        }
 
         hilo.start();
     }//GEN-LAST:event_jButton12MouseClicked
@@ -928,5 +940,6 @@ public class PrincipalLab7 extends javax.swing.JFrame {
     Parada parada_actual;
     int posEstudiante;
     HiloSimulacion hilo;
+    ArrayList<Double> distancias = new ArrayList();
 
 }
