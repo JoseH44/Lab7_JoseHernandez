@@ -33,6 +33,7 @@ public class PrincipalLab7 extends javax.swing.JFrame {
         adminBuses ad = new adminBuses("./autobuses.hz");
         adminEstudiantes ae = new adminEstudiantes("./estudiantes.hz");
         ap.cargarArchivo();
+        
 
         ad.cargarArchivo();
         ae.cargarArchivo();

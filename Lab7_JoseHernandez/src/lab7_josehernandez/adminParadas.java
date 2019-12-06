@@ -65,6 +65,7 @@ public class adminParadas {
                         lista_paradas.add(temp);
                     }
                 } catch (EOFException e) {
+
                 }
                 objeto.close();
                 entrada.close();
